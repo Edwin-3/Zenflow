@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenFlow</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel=“stylesheet” href=“https://use.fontawesome.com/releases/v5.7.0/css/all.css”
+    integrity=“sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ” crossorigin=“anonymous”>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="quote.js"></script>
+</head>
+
+<body>
+  <div class="container-sm bg-light bg-gradient pt-5 px-0 mt-3 rounded border shadow" style="max-width: 420px;">
+    <div class="quotes mx-auto px-5">
+      <figure class="text-center">
+        <blockquote class="blockquote" style="margin-bottom: 4px;">
+          <p id="quote"></p>
+        </blockquote>
+        <figcaption class="blockquote-footer text-muted mt-1" style="display: flex; justify-content: center;">
+          <p id="author"></p> <cite class="refresh ms-3" onclick="main()"><i class="bi bi-arrow-clockwise"></i></cite>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="tabs">
+      <nav>
+        <div class="nav nav-pills nav-fill" id="nav-tabs" role="tablist">
+          <button class="nav-link active" id="nav-task-tab" data-bs-toggle="tab" data-bs-target="#task-tab-pane"
+            type="button" role="tab" aria-controls="task-tab" aria-selected="true"><i
+              class="bi bi-list-task me-2"></i>Task</button>
+          <button class="nav-link" id="nav-music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane"
+            type="button" role="tab" aria-controls="music-tab" aria-selected="false"><i
+              class="bi bi-music-note-list me-2"></i>Music</button>
+          <button class="nav-link" id="nav-timer-tab" data-bs-toggle="tab" data-bs-target="#timer-tab-pane"
+            type="button" role="tab" aria-controls="timer-tab" aria-selected="false"><i
+              class="bi bi-stopwatch me-2"></i>Timer</button>
+        </div>
+      </nav>
+    </div>
+    <div class="tab-content px-4 pt-4 mb-5 " id="nav-tabContent">
+      <div class="tab-pane fade show active" id="task-tab-pane" role="tabpanel" aria-labelledby="nav-task-tab"
+        tabindex="0">
+        <form id="task_form">
+          <div class="input-group mb-3">
+            <input type="text" id="task_input" class="form-control" placeholder="Add a task here..." aria-label="task name"
+              aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="bi bi-plus-lg"></i></button>
+          </div>
+        </form>
+        <div id="tasks"></div>
+      </div>
+      <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="nav-music-tab" tabindex="0">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Copy & paste link here..." aria-label="music name"
+            aria-describedby="button-addon2">
+          <button class="btn btn-primary" type="submit" id="button-addon2"><i class="bi bi-plus-lg"></i></button>
+        </div>
+        <div class="row g-2">
+          <div class="col-4">
+            <div class="card">
+              <img src="./assets/Lofistudy.jpg" class="card-img-top" style="height: 110px; object-fit: cover;"
+                alt="...">
+              <div class="card-body p-2">
+                <h6 class="card-title">Card title</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="./assets/desktop.jpg" class="card-img-top" style="height: 110px; object-fit: cover;" alt="...">
+              <div class="card-body p-2">
+                <h6 class="card-title">Card title</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="./assets/Lofistudy.jpg" class="card-img-top" style="height: 110px; object-fit: cover;"
+                alt="...">
+              <div class="card-body p-2">
+                <h6 class="card-title">Card title</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="./assets/desktop.jpg" class="card-img-top" style="height: 110px; object-fit: cover;" alt="...">
+              <div class="card-body p-2">
+                <h6 class="card-title">Card title</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade " id="timer-tab-pane" role="tabpanel" aria-labelledby="nav-timer-tab" tabindex="0">
+        <ul class="nav nav-pills nav-fill mx-2 mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-pill" id="pills-pomo-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-pomodoro" type="button" role="tab" aria-controls="pills-pomodoro"
+              aria-selected="true">Pomodoro</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill " id="pills-short-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-short" type="button" role="tab" aria-controls="pills-short"
+              aria-selected="false">Short Break</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill" id="pills-long-tab" data-bs-toggle="pill" data-bs-target="#pills-long"
+              type="button" role="tab" aria-controls="pills-long" aria-selected="false">Long Break</button>
+          </li>
+        </ul>
+        <div class="tab-content mx-2" id="pills-tabContent">
+          <div class="tab-pane fade show active mx-2" id="pills-pomodoro" role="tabpanel"
+            aria-labelledby="pills-pomo-tab">
+            <!-- pomodoro -->
+            <h1 class="display-3 text-center mt-3">25:00</h1>
+            <div class="row justify-content-between mt-5">
+              <input type="number" class="form-control col rounded-pill"
+                placeholder="Enter the pomodoro time in minutes" style="max-width: 102px;">
+              <button class="btn btn-primary col rounded-pill" type="button" style="max-width: 102px;">Start</button>
+              <button class="btn btn-outline-secondary col rounded-pill" type="button"
+                style="max-width: 102px;">Reset</button>
+
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-short" role="tabpanel" aria-labelledby="pills-short-tab">...</div>
+          <div class="tab-pane fade" id="pills-long" role="tabpanel" aria-labelledby="pills-long-tab">...</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+    <script src="tasks.js" type="text/javascript"></script>
+</body>
+
+</html>
