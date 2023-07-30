@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
 #tasks .task {
     display: flex;
     flex-direction: row;
@@ -67,7 +73,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 1.5rem;
+    padding: 0.25rem 1.25rem;
     border-radius: 4px;
 
 }
@@ -78,7 +84,68 @@
     background-color: #FDFDFD;
     border-radius: 4px;
 }
-.bottom_navbar .help{
+
+#currentTime {
+    margin-right: 4px;
+}
+
+
+.timer-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#timer-controls{
+    width: 100%;
+}
+
+.timer {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 7px 27px 2px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: -1px 7px 27px 2px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: -1px 7px 27px 2px rgba(0, 0, 0, 0.64);
+}
+
+.timer .circle{
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #578FDB;
+    position: relative;
+}
+
+.timer .circle::before{
+    content: "";
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    background-color: #FDFDFD;
+}
+
+.time{
+    position: relative;
     display: flex;
     flex-direction: row;
+}
+
+.time p{
+    margin: 0;
+    font-size: 2.4rem;
+}
+
+.time p:nth-of-type(2){
+    position: relative;
+    top: -.3rem;
+    margin-inline: 0.5rem;
 }
