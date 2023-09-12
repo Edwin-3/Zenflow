@@ -108,9 +108,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 7px 27px 2px rgba(0, 0, 0, 0.64);
-    -webkit-box-shadow: -1px 7px 27px 2px rgba(0, 0, 0, 0.64);
-    -moz-box-shadow: -1px 7px 27px 2px rgba(0, 0, 0, 0.64);
+    box-shadow: 1px 6px 21px 12px rgba(104,104,104,0.25);
+    -webkit-box-shadow: 1px 6px 21px 12px rgba(104,104,104,0.25);
+    -moz-box-shadow: 1px 6px 21px 12px rgba(104,104,104,0.25);
 }
 
 .timer .circle{

@@ -22,14 +22,37 @@ const cardData = [
     {
         imageSrc: './assets/Lofistudy.jpg',
         title: 'Card Title 5',
+        audio: './assets/stickwitchu.mp3',
+    },
+    {
+        imageSrc: './assets/Lofistudy.jpg',
+        title: 'Card Title 5',
         audio: './assets/afro-inst.mp3',
     },
 ]
 
 let currentAudio = null;
 
+function updatePlayPauseButton() {
+    const playPauseButton = document.querySelector('#playPauseButton');
+    const icon = playPauseButton.querySelector('i');
+
+    if (currentAudio && !currentAudio.paused) {
+        icon.classList.remove('bi-play-fill');
+        icon.classList.add('bi-pause-fill');
+        playPauseButton.textContent = " Pause";
+        playPauseButton.prepend(icon);
+    } else {
+        icon.classList.remove('bi-pause-fill');
+        icon.classList.add('bi-play-fill');
+        playPauseButton.textContent = " Play";
+        playPauseButton.prepend(icon);
+    }
+}
+
 function generateCards() {
     const cardContainer = document.querySelector('#cardContainer')
+
 
     cardData.forEach((card) => {
         const cardCol = document.createElement('div');
@@ -71,7 +94,10 @@ function generateCards() {
             }
 
             currentAudio = audio;
+            updatePlayPauseButton();
         });
+
+
 
         cardBody.appendChild(cardTitle);
         cardDiv.appendChild(cardImg);
@@ -83,21 +109,24 @@ function generateCards() {
 }
 
 function togglePlayPause() {
-    const playPauseButton = document.querySelector('#playPauseButton');
     if (currentAudio) {
-      if (currentAudio.paused) {
-        currentAudio.play();
-        playPauseButton.classList.remove('bi-play-fill');
-        playPauseButton.classList.add('bi-pause-fill');
-      } else {
-        currentAudio.pause();
-        playPauseButton.classList.remove('bi-pause-fill');
-        playPauseButton.classList.add('bi-play-fill');
-      }
+        if (currentAudio.paused) {
+            currentAudio.play();
+        } else {
+            currentAudio.pause();
+        }
+        updatePlayPauseButton();
     }
-  }
-  
-  
+}
+
+
+
+document.getElementById('volumeSlider').addEventListener("input", function (e) {
+    if (currentAudio) {
+        currentAudio.volume = e.target.value;
+    }
+})
+
 
 
 
